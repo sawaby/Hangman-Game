@@ -7,6 +7,7 @@ var wins = 0;
 var letterTyped = [];
 var hangman = [];
 var i;
+var numLetterTyped = 0;
 
 var computerGuess = options[Math.floor(Math.random() * options.length)];
 
@@ -26,19 +27,36 @@ function arrayComGuess(chosenWord){
 
 	document.onkeyup = function(event){
 		var letter = event.key.toLowerCase();
+
 		for(i = 0; i<chosenWord.length; i++){
 			if(letter === chosenWord[i]){
-				hangman[chosenWord.indexOf(letter)] = letter;
-				console.log(letter);
-				console.log(hangman);
+				for(var j =0; j<chosenWord.length; j++){
+					if(chosenWord[j] == letter){
+						hangman[j] = letter;
+					}
+				}
+				// hangman[chosenWord.indexOf(letter)] = letter;
+				// console.log(letter);
+				// console.log(hangman);
 				document.querySelector("#emptyArray").innerHTML = hangman.join(" ");
+				// showLives -=1;
+				// document.querySelector("#showLives").innerHTML = showLives;
 			}
-			console.log(i);
+			// if(chosenWord == hangman){
+			// 	wins +=1;
+				
+			// }
+			console.log("wins"+wins);
 		}
-	}
+
+	};
 	
  }
-
+// ["Nano","Volvo","BMW","Nano","VW","Nano"].reduce(function(a, e, i) {
+//     if (e === 'Nano')
+//         a.push(i);
+//     return a;
+// }, []); 
 // function(arr){
 // 	document.onkeyup = function(event){
 // 		var letter = key.event.toLowerCase();
