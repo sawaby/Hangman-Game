@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<!-- Title  -->
+	<!-- Title  -->
 	<div class="row">
 		<div class="col-md-12">
 			<h1 class="rainbow">The Hangman Game</h1>
@@ -22,31 +22,40 @@
 	<div id="middle" class="container">
 		
 		<div class="row">
-			<div id="border" class="col-md-6">
-				
+			<!-- THIS COLUMN REPRESENTS NUMBER OF WINS -->
+			<div id="border" class="col-md-3">
 				<span id="start"><p>PRESS ANY KEY TO GET STARTED.</p></span>
-
 				<span><p>WINS:</p></span>
 				<p id="wins"></p>
 				<span><p>CORRECT WORDS</p></span>
-				<!-- <hr> -->	
-				<!-- <div class="btn-group" role="group" aria-label="...">
-					  
-					<button  id="reset" type="button" class="btn btn-default">Play Again</button>
-					
-				</div> -->
-
+				<hr>
+				<p>THIS IS ALL ABOUT SPORTS</p>
 			</div>
-			<div id="border" class="col-md-6">
-				<p id="emptyArray"></p>
-				<span><p>NUMBER OF CHANCES REMAINING:</p></span>
-				<p id="showLives"></p>
-				<p id="alert"></p>
-				<p>LETTER TYPED SO FAR: </p>
-				<p id="letterTyped"></p>
+			<!-- THIS COLUMN SHOWS THE IMAGE ASSOCIATED WITH -->
+			<div id="border" class="col-md-3">
+				
 				
 
 			</div>
+			<!-- THIS COLUMN SHOWS THE ACTUAL WORD GUESSING AND NUMBER OF LIVES(CHANCES) -->
+			<div id="border" class="col-md-3">
+				<p id="emptyArray"></p>
+				<span><p>NUMBER OF CHANCES REMAINING:</p></span>
+				<p id="showLives"></p>
+				<p>LETTER TYPED SO FAR: </p>
+				<p id="letterTyped"></p>
+			</div>
+			<!-- THIS COLUMN DISPLAYS THE HANGMAN -->
+			<div id="border" class="col-md-3">
+				
+				
+
+			</div>
+		</div>
+		<!-- image  -->
+		<div id = "image">
+			<img src="assets/images/sports.png">
+
 		</div>
 
 	</div>
