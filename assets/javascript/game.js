@@ -4,13 +4,64 @@ var wins = 0;
 var hangman = []; //empty array to be filled after user guesses
 var i;
 var showLives = 15;
-var options = ["football","basketball","soccer", "tennis", "swimming", "badminton",
- 	"cycling", "golf", "hunting", "running", "sailing"];
+var image = document.createElement("img");
+image.setAttribute("id", "showImg");
+
+var options = {};
+options = {football: function(){
+					image.setAttribute("src", "assets/images/football.jpg");
+					document.querySelector("#displayImg").appendChild(image);
+				},
+				basketball: function(){
+						image.setAttribute("src", "assets/images/basketball.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },	
+				soccer: function(){
+						image.setAttribute("src", "assets/images/soccer.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },	
+				tennis: function(){
+						image.setAttribute("src", "assets/images/Tennis.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },	
+				swimming: function(){
+						image.setAttribute("src", "assets/images/swimming.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },	
+				badminton: function(){
+						image.setAttribute("src", "assets/images/badminton.JPG");
+						document.querySelector("#displayImg").appendChild(image);
+						 },	
+				
+				cycling: function(){
+						image.setAttribute("src", "assets/images/cycling.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },
+				golf: function(){
+						image.setAttribute("src", "assets/images/golf.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },
+				hunting: function(){
+						image.setAttribute("src", "assets/images/hunting.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },
+				running: function(){
+						image.setAttribute("src", "assets/images/running.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },
+				sailing: function(){
+						image.setAttribute("src", "assets/images/sailing.jpg");
+						document.querySelector("#displayImg").appendChild(image);
+						 },
+				};	
+
+				//"basketball", "soccer", "tennis", "swimming", "badminton","cycling", "golf", "hunting", "running", "sailing"};
+
 var chosenWord;
 
 function resetGame(){
 	// choose a random word
- 	chosenWord = options[Math.floor(Math.random() * options.length)];
+ 	chosenWord = Object.keys(options)[Math.floor(Math.random() * Object.keys(options).length)];
  	showLives = 15;
  	document.querySelector("#showLives").innerHTML = showLives;
  	document.querySelector("#letterTyped").innerHTML = " ";
@@ -31,9 +82,83 @@ function hangmanArray(chosenWord){
 	document.querySelector("#emptyArray").innerHTML = hangman.join(" ");
 }
 
+var x = document.getElementById("#audio"); 
 
+function playAudio() { 
+    x.play(); 
+} 
+
+// function pauseAudio() { 
+//     x.pause(); 
+// } 
 	
 
+//hangman function 
+function hangmanDraw(){
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	//vertical line
+	ctx.beginPath();
+	ctx.moveTo(20, 30);
+	ctx.lineTo(20, 160);
+	ctx.stroke();
+
+	//bottom line
+	ctx.beginPath();
+	ctx.moveTo(60, 150);
+	ctx.lineTo(20, 150);
+	ctx.stroke();
+
+	//up line
+	ctx.beginPath();
+	ctx.moveTo(20, 30);
+	ctx.lineTo(100, 30);
+	ctx.stroke();
+
+
+	//string line
+	ctx.beginPath();
+	ctx.moveTo(100, 30);
+	ctx.lineTo(100, 50);
+	ctx.stroke();
+
+	//body line
+	ctx.beginPath();
+	ctx.moveTo(100, 90);
+	ctx.lineTo(100, 130);
+	ctx.stroke();
+
+
+	//left hand line
+	ctx.beginPath();
+	ctx.moveTo(100, 100);
+	ctx.lineTo(80, 120);
+	ctx.stroke();
+
+	//rigth hand line
+	ctx.beginPath();
+	ctx.moveTo(100, 100);
+	ctx.lineTo(120, 120);
+	ctx.stroke();
+
+	//left leg line
+	ctx.beginPath();
+	ctx.moveTo(100, 130);
+	ctx.lineTo(80, 150);
+	ctx.stroke();
+
+	//rigth leg line
+	ctx.beginPath();
+	ctx.moveTo(100, 130);
+	ctx.lineTo(120, 150);
+	ctx.stroke();
+
+	//head
+	ctx.beginPath();
+	ctx.arc(100, 70, 20, 0, 2 * Math.PI);
+	ctx.stroke();
+}
+hangmanDraw();
 // when user press a key, on key up this statement triggers the event
 document.onkeyup = function(event){
 	// any letter changed to lowercase
@@ -46,9 +171,8 @@ document.onkeyup = function(event){
 		// iterate over the random word to find if the entered key is in there
 		for(i = 0; i<chosenWord.length; i++){
 			if(letter === chosenWord[i]){
-				if(chosenWord[i] == letter){
-					hangman[i] = letter;
-				}	
+				hangman[i] = letter;
+					
 			}		
 		}
 		//display the hangman array	
@@ -70,6 +194,36 @@ document.onkeyup = function(event){
 		if (hangman.join("") == chosenWord) {
 			wins++;
 			document.querySelector("#wins").innerHTML = wins;
+			// display image
+			if(chosenWord == "football"){
+				options.football();
+			}else if(chosenWord == "basketball"){
+				options.basketball();
+			}else if(chosenWord == "badminton"){
+				options.badminton();
+			}else if(chosenWord == "tennis"){
+				options.tennis();
+			}else if(chosenWord == "soccer"){
+				options.soccer();
+			}else if(chosenWord == "golf"){
+				options.golf();
+			}else if(chosenWord == "swimming"){
+				options.swimming();
+			}else if(chosenWord == "cycling"){
+				options.cycling();
+			}else if(chosenWord == "hunting"){
+				options.hunting();
+			}else if(chosenWord == "running"){
+				options.running();
+			}else if(chosenWord == "sailing"){
+				options.sailing();
+			}
+			window.onload=function(){
+				playAudio();
+			}
+
+			//document.querySelector("#displayImg").innerHTML = options.football();
+			//document.querySelector("#displayImg").innerHTML = options.chosenWord();
 			//if the user wins, wait 1 sec, then reset the game
 			setTimeout(resetGame, 1000);
 		}	

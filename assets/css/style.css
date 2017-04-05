@@ -34,3 +34,19 @@ h1{
   -webkit-background-clip: text;
   background-clip: text;
 }
+
+#showImg{
+	width: 200px;
+	height: 200px;
+	/*margin: 20px;*/
+}
+canvas{
+	width: 235px;
+	height: 180px;
+	
+}
+#mcan{
+	border-style: dashed;
+	height: 260px;
+	padding: 0px 30px 0 30px;
+}
