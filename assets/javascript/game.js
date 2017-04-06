@@ -86,22 +86,6 @@ function hangmanArray(chosenWord){
 	document.querySelector("#emptyArray").innerHTML = hangman.join(" ");
 }
 
-
-
-function playAudio() { 
-	//x.autoplay = true;
-	document.getElementById("myaudio").innerHTML = x;
-} 
-// function playAudio() {
-// 	var audioElement = document.createElement("audio");
-// 	audioElement.setAttribute("src", "Assets/captainplanet24.mp3");
-// 	audioElement.play
-// }
-// function pauseAudio() { 
-//     x.pause(); 
-// } 
-	
-
 //hangman drawing object
 var hangmanObj= {};
 var c = document.getElementById("myCanvas");
@@ -182,7 +166,7 @@ hangmanObj = {vertical: function(){
 }; 
 
 
-//hangman Draw conditions, this method is called where show live is increased
+//hangman Draw conditions, this method is called where show live is decreased
 function hangmanCall(){
 	hangmanObj.bottom();
 	if(showLives == 9){
@@ -269,13 +253,22 @@ document.onkeyup = function(event){
 			}else if(chosenWord == "sailing"){
 				options.sailing();
 			}
-			var audio = new Audio('./assets/music.mp3');
-			audio.play();
-				playAudio();
-			
 
 			//if the user wins, wait 1 sec, then reset the game
 			setTimeout(resetGame, 1000);
+
+			var audio = new Audio('./assets/music.mp3');
+			audio.play();
+
+			//audio pause function to stop it when we want
+			function pauseA()
+			{
+				audio.pause();
+			}
+			//stop audio after 8 seconds calling pauseA function
+			setTimeout(pauseA, 8000);	
+
+			
 		}	
 	}
 	else {
