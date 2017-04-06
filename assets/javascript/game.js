@@ -87,13 +87,16 @@ function hangmanArray(chosenWord){
 }
 
 
-// playing audio
-var x = document.getElementById("#audio"); 
 
 function playAudio() { 
-    x.play(); 
+	//x.autoplay = true;
+	document.getElementById("myaudio").innerHTML = x;
 } 
-
+// function playAudio() {
+// 	var audioElement = document.createElement("audio");
+// 	audioElement.setAttribute("src", "Assets/captainplanet24.mp3");
+// 	audioElement.play
+// }
 // function pauseAudio() { 
 //     x.pause(); 
 // } 
@@ -266,9 +269,10 @@ document.onkeyup = function(event){
 			}else if(chosenWord == "sailing"){
 				options.sailing();
 			}
-			window.onload=function(){
+			var audio = new Audio('./assets/music.mp3');
+			audio.play();
 				playAudio();
-			}
+			
 
 			//if the user wins, wait 1 sec, then reset the game
 			setTimeout(resetGame, 1000);
