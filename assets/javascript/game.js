@@ -8,6 +8,7 @@ var chosenWord;
 var image = document.createElement("img");
 image.setAttribute("id", "showImg");
 
+//object definition for setting images in accordance to guesses
 var options = {};
 options = {football: function(){
 					image.setAttribute("src", "assets/images/football.jpg");
@@ -56,10 +57,7 @@ options = {football: function(){
 						 },
 				};	
 
-				//"basketball", "soccer", "tennis", "swimming", "badminton","cycling", "golf", "hunting", "running", "sailing"};
-
-
-
+//resetGame function will reset the game when the user wins or looses
 function resetGame(){
 	// choose a random word
  	chosenWord = Object.keys(options)[Math.floor(Math.random() * Object.keys(options).length)];
@@ -101,7 +99,7 @@ function playAudio() {
 // } 
 	
 
-//hangman object
+//hangman drawing object
 var hangmanObj= {};
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
@@ -229,10 +227,9 @@ document.onkeyup = function(event){
 			showLives -=1;
 			document.querySelector("#showLives").innerHTML = showLives;
 		}
-		// calling hangmanCall function to draw hangman
-		//if(showLives <10){
-			hangmanCall();
-		//}
+		// calling hangmanCall function to draw hangman whenever the user looses a chance
+		hangmanCall();
+		
 		
 		//if number of chances equals 0 reset the game
 		if(showLives <= 0){
